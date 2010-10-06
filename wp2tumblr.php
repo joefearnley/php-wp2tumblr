@@ -24,8 +24,7 @@ $xml = simplexml_load_file($file_name);
 $wp_posts = array();
 
 foreach($xml->channel->item as $post) { 
-    $content = $post->children($namespaces['content']);    
-    $content = str_replace('<div class="center">','<div style="text-align: center;">',$content->encoded);
+    $content = $post->children($namespaces['content']);
     array_push($wp_posts, array('title' => $post->title, 'date' => $post->pubDate, 'body' => $content));
 }
 
